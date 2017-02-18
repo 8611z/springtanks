@@ -30,18 +30,26 @@ function script.QueryTransport(passengerID)
 end
 function script.EndTransport(each, passengerID)
 end
-function script.TransportPickup (passengerID)	
+function script.TransportPickup (passengerID)
 	local unitDef = UnitDefs[Spring.GetUnitDefID(passengerID)]
 	passengerteam = Spring.GetUnitAllyTeam (passengerID)
 	if (unitDef.name == "tpmlauncher")									--always pick up rocket launcher
-	or (passengerteam ~= Spring.GetUnitAllyTeam(unitID) and unitDef.name == "tpflag") then 	--only pick up enemy flags	
+	or (passengerteam ~= Spring.GetUnitAllyTeam(unitID) and unitDef.name == "tpflag") then 	--only pick up enemy flags
 		Spring.SetUnitNoSelect (passengerID, true)
 		Spring.UnitScript.AttachUnit (flagattachpoint, passengerID)
 	end
 end
 ------------------------
 
-function script.FireWeapon1()
+function script.QueryWeapon(num)
+	return base
+end
+
+function script.AimFromWeapon(num)
+	return base
+end
+
+function script.FireWeapon(num)
 	--Emit blabla
 	Sleep(30)
 end

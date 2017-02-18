@@ -12,7 +12,6 @@ return {
       alwaysVisible = 0,
 	  properties = {
         alwaysVisible = 0,
-        explosiongenerator = [[custom:tprespawn]],
 	  airdrag            = 1,
         colormap           = [[1 1 1 0.9    0.9 0 0.9 0.6    1 0.0 0.1 0.95     0.9 0.9 0 0.8	0.3 1 0.3 0.1]],
         directional        = true,
@@ -33,7 +32,7 @@ return {
         texture            = [[lines]],
       },
     },
-  ["groundflash"] = {	
+  ["groundflash"] = {
       flashSize = 1000,
       flashAlpha = 0.2,
       circleGrowth = 1.1,
@@ -44,6 +43,6 @@ return {
 	  air=1,
       ground=1,
       water=1,
-   },   
+   },
   },
 }

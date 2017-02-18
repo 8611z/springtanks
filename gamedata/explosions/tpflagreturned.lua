@@ -12,7 +12,6 @@ return {
       alwaysVisible = 0,
 	  properties = {
         alwaysVisible = 0,
-        explosiongenerator = [[custom:tpflagreturn]],
 		airdrag            = 0.9,
         colormap           = [[1 1 1 1  0 0 0 1 1 1 1 1  0 0 0 1 1 1 1 1  0 0 0 1  1 1 1 1  0 0 0 1 1 1 1 1  0 0 0 1 1 1 1 1  0 0 0 1]],
         directional        = false,

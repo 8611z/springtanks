@@ -13,7 +13,6 @@ return {
 	  alwaysVisible = 0,
 	  properties = {
         alwaysVisible = 0,
-        explosiongenerator = [[custom:tpmissleimpact]],
 	  airdrag            = 0.75,
         colormap           = [[0.3 0.3 0.9 0.9    0.6 0.5 0.9 0.6    0.6 0.6 0.9 0.3     0.8 0.8 0.8 0.1]],
         directional        = false,
@@ -34,12 +33,12 @@ return {
         texture            = [[dirt]],
       },
     },
-  
+
   groundhit = {
       air                = true,
       class              = [[CSimpleParticleSystem]],
       count              = 4,
-      ground             = true,	  
+      ground             = true,
       underwater         = 1,
       useairlos          = true,
       water              = true,
@@ -67,7 +66,7 @@ return {
         sizemod            = 0.9,
         texture            = [[dirt]],
       },
-    }, 
-  
+    },
+
   },
 }

@@ -30,8 +30,8 @@ return {
         [3]  = 0.4,
       },
     },
-    	
-  
+
+
   	flames = {
       air                = true,
       class              = [[explspike]],
@@ -46,8 +46,8 @@ return {
         length             = 2,
         width              = 20,
       },
-    },	
-	
+    },
+
 	ringsmoke = {
       air                = true,
       class              = [[CSimpleParticleSystem]],
@@ -59,7 +59,6 @@ return {
       alwaysVisible = 0,
 	  properties = {
         alwaysVisible = 0,
-        explosiongenerator = [[custom:ringsmoke]],
 		airdrag            = 0.95,
         colormap           = [[1 1 1 0.1   0.1 0.1 0.1 0.5 ]],
         directional        = false,
@@ -81,5 +80,5 @@ return {
       },
     },
   },
-  
+
 }

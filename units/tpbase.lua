@@ -3,7 +3,6 @@ unitDef = {
   name                = [[Base]],
   description         = [[Bring enemy flags to your base to score]],
   iconType		    = "square",
-  isCommander		  = true, --so crtl c centers view on base naja iwie nicht
   HideDamage 	    = 1,
   Autoheal		    = 1000,
   acceleration        = 0,
@@ -20,10 +19,10 @@ unitDef = {
   canPatrol           = true,
   canstop             = [[1]],
   category            = [[FLAG]],
-  corpse              = [[DEAD]],
+  --corpse              = [[DEAD]],
   reclaimable         = false,
   --HITBOX--
-  --collisionVolumeTest       =  1,	
+  --collisionVolumeTest       =  1,
   --collisionVolumeOffsets    =  [[0 0 0]],
   --collisionVolumeType       =  [[box]],
   --collisionVolumeScales     =  [[55 65 55]],
@@ -54,7 +53,7 @@ unitDef = {
   seismicSignature    = 4,
   selfDestructAs      = [[SMALL_UNIT]],
 
-		
+
   sfxtypes            = {
 
 	explosiongenerators = {
@@ -71,6 +70,9 @@ unitDef = {
 	  ok = {
 	"Argh_TankSound",
 	},
+  },
+  customparams = {
+    isbase = true,
   },
 
   side                = [[GAYS]],

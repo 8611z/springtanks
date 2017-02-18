@@ -54,9 +54,9 @@ local deltaheading = 0
 
 
 -----------------
-function script.Create()	
+function script.Create()
 	--Spring.Echo ("unit " .. unitID .. " was created!")
-	get_tracks ()	
+	get_tracks ()
 	--distrubute track pieces to left and right wheels
 	for i=1,table.getn (track) do
 		Move (track[i], x_axis, trackoffsetx)
@@ -64,13 +64,13 @@ function script.Create()
 		Move (track[i], y_axis, 100)
 		--Spring.Echo ("moving trackpiece " .. i)
 	end
-	for i=trackn+1,trackn*2 do 
+	for i=trackn+1,trackn*2 do
 		Move (track[i], x_axis, -trackoffsetx)
 		Move (track[i], z_axis, 0)
-		Move (track[i], y_axis, 100)		
-	end	
+		Move (track[i], y_axis, 100)
+	end
 	--Hide unusued trackpieces
-	for i=(trackn*2)+1,table.getn (track) do 
+	for i=(trackn*2)+1,table.getn (track) do
 		Hide (track[i])
 	end
 	movetracks()
@@ -92,10 +92,10 @@ end
 
 -----DRIVING------
 function get_tracks ()
-	for i=1,40 do 
-	local tname = "t" .. i	
+	for i=1,40 do
+	local tname = "t" .. i
 	track[i] = {}
-	track[i] = piece (tname)	
+	track[i] = piece (tname)
 	end
 end
 
@@ -115,25 +115,25 @@ function updateheading()
 		lastheading = currentheading
 		currentheading = Spring.GetUnitHeading(unitID)
 		deltaheading = lastheading - currentheading
-		
+
 		Sleep (200)
 		if (math.abs(deltaheading)<100) then
 			ut_leftstep = trackspeed
 			ut_rightstep = trackspeed
 			--Spring.Echo ("^\t" .. deltaheading)
 		end
-		if (deltaheading<-1000) then 
+		if (deltaheading<-1000) then
 			ut_leftstep = trackspeed/4
 			ut_rightstep = trackspeed
 			--Spring.Echo ("<\t" .. deltaheading)
 		end
-		if (deltaheading>1000) then 
+		if (deltaheading>1000) then
 			--Spring.Echo (">\t" .. deltaheading)
 			ut_leftstep = trackspeed
 			ut_rightstep = trackspeed/4
 		end
-			
-	end	
+
+	end
 end
 
 
@@ -147,7 +147,7 @@ if (ut > u1 and ut < u2) then
 	return -D/2 + math.cos(w)*wheelr,  math.sin(w)*wheelr, -w-(math.pi/2) -- use -w+(math.pi/2) if track pieces are inverted
 end
 
-if (ut > u3 and ut < u4) then ort = "rechtes rad" 
+if (ut > u3 and ut < u4) then ort = "rechtes rad"
 	local w = ((u3-ut) / (u4-u3))*math.pi + math.pi/2
 	ort = "rechtes rad " .. w
 	return D/2 + math.cos(w)*wheelr,  math.sin(w)*wheelr, -w-(math.pi/2) -- use -w+(math.pi/2) if track pieces are inverted
@@ -180,12 +180,12 @@ function movetracks()
 end
 
 
-function drive ()	
+function drive ()
 	Signal(SIG_DRIVE)
-	SetSignalMask(SIG_DRIVE)	
+	SetSignalMask(SIG_DRIVE)
 	while (true) do
 		--Spring.Echo ("rolling'")
-		movetracks()		
+		movetracks()
 		Sleep (50)
 		ut_left = ut_left + ut_leftstep
 		ut_right = ut_right + ut_rightstep
@@ -228,15 +228,22 @@ end
 function script.HitByWeapon (x, z, weaponDefID, damage)
 
 end
-	
+
 
 ------------------------------
 
 --SHOOTING
 
-function script.QueryWeapon1() return flare end
+function script.QueryWeapon(num)
+	if num == 2 then
+		return turret
+	end
+	return flare
+end
 
-function script.AimFromWeapon1() return turret end
+function script.AimFromWeapon(num)
+	return turret
+end
 
 function script.AimWeapon1( heading, pitch )
 	Signal(SIG_AIM)
@@ -245,23 +252,27 @@ function script.AimWeapon1( heading, pitch )
 	if (math.deg(pitch) < -10) then pitch = math.rad(-10) end
 	Turn(barrel, x_axis, -pitch, math.rad(50))
 	WaitForTurn(turret, y_axis)
-	WaitForTurn(barrel, x_axis)	
+	WaitForTurn(barrel, x_axis)
 	return true
 	--local uh = math.deg(Spring.GetUnitHeading(unitID)* 2*math.pi / 32768)
 	--Spring.Echo (math.abs(math.deg(heading))-uh )
 	--if (math.abs(math.deg(heading)) < 20) then return true end
 end
 
-function script.AimWeapon2( heading, pitch )	
+function script.AimWeapon2( heading, pitch )
 	--SetSignalMask(SIG_AIM)
-	--Signal(SIG_AIM)	
+	--Signal(SIG_AIM)
 	--Turn(turret, y_axis, heading, math.rad(120)) --90
 	--if (math.deg(pitch) < -10) then pitch = math.rad(-10) end
-	--Turn(barrel, x_axis, -pitch, math.rad(50))		
+	--Turn(barrel, x_axis, -pitch, math.rad(50))
 	--return false
+	return true
 end
 
-function script.FireWeapon1()
+function script.FireWeapon(num)
+	if num == 2 then
+		return
+	end
 --	EmitSfx(flare, orc_machinegun_flash)
 --	EmitSfx(flare, orc_machinegun_muzzle)
 	--Spring.MoveCtrl.SetGroundMoveTypeData(unitID, "maxSpeed", 0.5)
@@ -276,7 +287,7 @@ end
 --[[
 function script.QueryWeapon() return flare end
 
-function script.AimWeapon(weaponNum, heading, pitch )	
+function script.AimWeapon(weaponNum, heading, pitch )
 	if (weaponNum==1) then
 		Signal(SIG_AIM)
 		SetSignalMask(SIG_AIM)
@@ -291,8 +302,8 @@ function script.AimWeapon(weaponNum, heading, pitch )
 	end
 	if (weaponNum==2) then
 		--WaitForTurn(turret, y_axis)
-		--WaitForTurn(barrel, x_axis)		
-		return false 
+		--WaitForTurn(barrel, x_axis)
+		return false
 	end
 end
 
@@ -301,7 +312,7 @@ function script.FireWeapon(weaponNum)
 --	EmitSfx(flare, orc_machinegun_muzzle)
 	--Spring.MoveCtrl.SetGroundMoveTypeData(unitID, "maxSpeed", 0.5)
 	--Spring.MoveCtrl.SetGroundMoveTypeData(unitID, "turnRate", 0.1)
-	if (weaponNum==1) then 
+	if (weaponNum==1) then
 		Move (barrel, z_axis, -10)
 		Move (barrel, z_axis, 0,7)
 		Sleep(10)
@@ -311,7 +322,7 @@ function script.FireWeapon(weaponNum)
 end
 --]]
 
-function script.Killed(recentDamage, maxHealth)	
+function script.Killed(recentDamage, maxHealth)
 	Spring.UnitScript.Explode (turret, SFX.SHATTER)
 	Spring.UnitScript.Explode (barrel, SFX.FIRE)
 	Spring.UnitScript.Explode (wheel1r, SFX.FALL)
@@ -336,11 +347,11 @@ end
 function script.EndTransport(each, passengerID)
 end
 
-function script.TransportPickup (passengerID)	
+function script.TransportPickup (passengerID)
 	local unitDef = UnitDefs[Spring.GetUnitDefID(passengerID)]
 	passengerteam = Spring.GetUnitAllyTeam (passengerID)
 	if (unitDef.name == "tpmlauncher")									--always pick up rocket launcher
-	or (passengerteam ~= Spring.GetUnitAllyTeam(unitID) and unitDef.name == "tpflag") then 	--only pick up enemy flags	
+	or (passengerteam ~= Spring.GetUnitAllyTeam(unitID) and unitDef.name == "tpflag") then 	--only pick up enemy flags
 		Spring.SetUnitNoSelect (passengerID, true)
 		Spring.UnitScript.AttachUnit (flagattachpoint, passengerID)
 	end

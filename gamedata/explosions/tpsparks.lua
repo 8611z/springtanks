@@ -4,7 +4,7 @@ return {
     tpunithit = {
       air                = true,
       class              = [[CSimpleParticleSystem]],
-      count              = 1,      
+      count              = 1,
 	  ground             = false,
       unit				 = true,
 	  underwater         = 1,
@@ -12,7 +12,6 @@ return {
       water              = true,
       alwaysVisible = 0,
 	  properties = {
-	  explosiongenerator = [[custom:tpsparks]],
 		sizegrowth=0,
 		sizemod=1,
 		pos=[[0, 1.0, 0]],
@@ -30,14 +29,14 @@ return {
 		particleSizeSpread=1,
 		emitRot=0,
 		emitRotSpread=80,
-		directional=1,		
+		directional=1,
       },
     },
-	
+
 	tpgroundhit = {
       air                = true,
       class              = [[CSimpleParticleSystem]],
-      count              = 1,      
+      count              = 1,
 	  ground             = true,
       unit				 = false,
 	  underwater         = 1,
@@ -45,7 +44,6 @@ return {
       water              = true,
       alwaysVisible = 0,
 	  properties = {
-	  explosiongenerator = [[custom:tpsparks]],
 		sizegrowth=0,
 		sizemod=1,
 		pos=[[0, 1.0, 0]],
@@ -63,7 +61,7 @@ return {
 		particleSizeSpread=1,
 		emitRot=0,
 		emitRotSpread=30,
-		directional=1,		
+		directional=1,
       },
     },
   },

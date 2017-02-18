@@ -10,10 +10,9 @@ return {
       useairlos          = true,
       water              = true,
       alwaysVisible = 1,
-	  properties = {
+      properties = {
         alwaysVisible = 1,
-        explosiongenerator = [[custom:tpstars]],
-	  airdrag            = 0.9,
+        airdrag            = 0.9,
         colormap           = [[1 1 0.95 0.9    0 0 0.9 0.6    1 0.0 0.1 0.95     0.3 1 0.3 0.1]],
         directional        = false,
         emitrot            = 90,

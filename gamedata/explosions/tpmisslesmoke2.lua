@@ -13,7 +13,6 @@ return {
       alwaysVisible = 0,
 	  properties = {
         alwaysVisible = 0,
-        explosiongenerator = [[custom:tpmisslesmoke2]],
 	  airdrag            = 0.9,
         colormap           = [[1.0 0.1 0.1 0.9    0.8 0.8 0.8 0.8    0.5 0.4 0.1 0.5     0.1 0.1 0.1 0.6]],
         directional        = false,

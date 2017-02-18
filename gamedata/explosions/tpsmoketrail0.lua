@@ -12,7 +12,6 @@ return {
       alwaysVisible = 0,
 	  properties = {
         alwaysVisible = 0,
-        explosiongenerator = [[custom:tpsmoketrail0]],
 		airdrag            = 0,
         colormap           = [[0.5 0.5 0.5 1  1 1 1 0]],
         directional        = false,
